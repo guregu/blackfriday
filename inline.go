@@ -1068,7 +1068,12 @@ func helperEmphasis(p *parser, out *bytes.Buffer, data []byte, c byte) int {
 
 			var work bytes.Buffer
 			p.inline(&work, data[:i])
-			p.r.Emphasis(out, work.Bytes())
+			// dumb hack lolz
+			if c == '*' {
+				p.r.DoubleEmphasis(out, work.Bytes())
+			} else {
+				p.r.Emphasis(out, work.Bytes())
+			}
 			return i + 1
 		}
 	}
