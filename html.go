@@ -258,28 +258,12 @@ func (options *Html) HRule(out *bytes.Buffer) {
 func (options *Html) BlockCode(out *bytes.Buffer, text []byte, lang string) {
 	doubleSpace(out)
 
-	// parse out the language names/classes
-	count := 0
-	for _, elt := range strings.Fields(lang) {
-		if elt[0] == '.' {
-			elt = elt[1:]
-		}
-		if len(elt) == 0 {
-			continue
-		}
-		if count == 0 {
-			out.WriteString("<pre><code class=\"language-")
-		} else {
-			out.WriteByte(' ')
-		}
-		attrEscape(out, []byte(elt))
-		count++
-	}
-
-	if count == 0 {
-		out.WriteString("<pre><code>")
-	} else {
+	if lang != "" {
+		out.WriteString("<pre><code data-language=\"")
+		attrEscape(out, []byte(lang))
 		out.WriteString("\">")
+	} else {
+		out.WriteString("<pre><code>")
 	}
 
 	attrEscape(out, text)
