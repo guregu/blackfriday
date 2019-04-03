@@ -923,7 +923,7 @@ func (p *parser) terminateBlockquote(data []byte, beg, end int) bool {
 	if end >= len(data) {
 		return true
 	}
-	return p.quotePrefix(data[end:]) == 0 && p.isEmpty(data[end:]) == 0
+	return p.isEmpty(data[end:]) == 0
 }
 
 // parse a blockquote fragment
