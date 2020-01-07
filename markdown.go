@@ -145,6 +145,7 @@ var blockTags = map[string]struct{}{
 	"video":      {},
 
 	"spoiler": {},
+	"aa":      {},
 }
 
 // Renderer is the rendering interface.
