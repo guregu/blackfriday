@@ -144,9 +144,10 @@ var blockTags = map[string]struct{}{
 	"section":    {},
 	"video":      {},
 
-	"spoiler": {},
-	"aa":      {},
-	"ascii":   {},
+	"spoiler":   {},
+	"aa":        {},
+	"ascii":     {},
+	"tz-gold":   {},
 }
 
 // Renderer is the rendering interface.
